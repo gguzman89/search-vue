@@ -24,8 +24,34 @@ export default {
     SearchResults
   },
   methods: {
-    handleTable(results, query) {
-      this.results = this.results.concat(results);
+    async handleTable(results, query) {
+      var url = "https://en.wikipedia.org/w/api.php";
+
+      var params = {
+        action: "query",
+        list: "search",
+        srsearch: query,
+        format: "json"
+      };
+
+      url = url + "?origin=*";
+      Object.keys(params).forEach(function(key) {
+        url += "&" + key + "=" + params[key];
+      });
+
+      var resultados = [];
+      await fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(response) {
+          resultados = response.query.search;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
+      this.results = resultados;
       this.query = this.query + query;
     }
   }

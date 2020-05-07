@@ -8,10 +8,10 @@
         </template>
         <table>
           <tbody>
-            <tr v-for="result in results" :key="result.nro">
+            <tr v-for="result in results" :key="result.title">
               <b-card>
                 <b-card-text>
-                  <a href="/search" class="card-link">{{ result.nro }}</a>
+                  <a href="/search" class="card-link">{{ result.title }}</a>
                 </b-card-text>
               </b-card>
             </tr>
