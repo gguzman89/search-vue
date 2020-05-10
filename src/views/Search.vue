@@ -3,20 +3,28 @@
     <b-container>
       <search-form @render:table="handleTable" />
       <br />
-      <search-results :results="results" :query="query" />
+      <search-results
+        :results="results"
+        :query="query"
+        :query_results="query_results"
+      />
     </b-container>
   </div>
 </template>
 <script>
 import SearchForm from "@/components/SearchForm.vue";
 import SearchResults from "@/components/SearchResults.vue";
+// import axios from "axios";
+
+var url = "https://en.wikipedia.org/w/api.php";
 
 export default {
   name: "search",
   data() {
     return {
       results: [],
-      query: ""
+      query: "",
+      query_results: false
     };
   },
   components: {
@@ -25,8 +33,6 @@ export default {
   },
   methods: {
     async handleTable(results, query) {
-      var url = "https://en.wikipedia.org/w/api.php";
-
       var params = {
         action: "query",
         list: "search",
@@ -52,7 +58,8 @@ export default {
         });
 
       this.results = resultados;
-      this.query = this.query + query;
+      this.query = query;
+      this.query_results = true;
     }
   }
 };

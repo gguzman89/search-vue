@@ -1,5 +1,5 @@
 <template>
-  <div id="search-results">
+  <div id="search-results" v-show="query_results">
     <b-tabs v-if="results.length > 0" content-class="mt-3">
       <b-tab>
         <template v-slot:title>
@@ -11,7 +11,11 @@
             <tr v-for="result in results" :key="result.title">
               <b-card>
                 <b-card-text>
-                  <a href="/search" class="card-link">{{ result.title }}</a>
+                  <a
+                    :href="'http://en.wikipedia.org/?curid=' + result.pageid"
+                    class="card-link"
+                    >{{ result.title }}</a
+                  >
                 </b-card-text>
               </b-card>
             </tr>
@@ -29,7 +33,8 @@ export default {
   name: "search-results",
   props: {
     results: Array,
-    query: String
+    query: String,
+    query_results: Boolean
   }
 };
 </script>

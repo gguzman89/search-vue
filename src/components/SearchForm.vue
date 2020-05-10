@@ -7,6 +7,9 @@
           placeholder="Search"
           v-model="query"
         ></b-input>
+        <span v-show="query" @click="removeSearchQuery" class="removeInput"
+          >+</span
+        >
         <b-button type="submit" variant="outline-primary">
           <b-icon icon="search"></b-icon>
         </b-button>
@@ -20,33 +23,23 @@ export default {
   data() {
     return {
       query: "",
-      results: [
-        {
-          nro:
-            "Marshall Islands prohibit the importation, manufacturing, sale and distribution of styrofoam cups and plates, disposable plastic cups and plates, and plastic shopping bags."
-        },
-        {
-          nro:
-            "Marshall Islands prohibit the importation, manufacturing, sale and distribution of styrofoam cups and plates, disposable plastic cups and plates, and plastic shopping bags22."
-        },
-        {
-          nro: "Disposable Foam Container Toolkit – NRCM"
-        },
-        {
-          nro:
-            "Disposable Foam Container Toolkit by Natural Resources Council of Maine"
-        },
-        {
-          nro: "Disposable Foam Container Toolkit – NRCM322"
-        }
-      ]
+      results: []
     };
   },
   methods: {
     handleSubmit() {
       this.$emit("render:table", this.results, this.query);
       this.results = [];
+    },
+
+    removeSearchQuery() {
+      this.query = "";
     }
   }
 };
 </script>
+<style>
+.removeInput {
+  transform: rotate(45deg);
+}
+</style>
