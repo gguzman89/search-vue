@@ -22,14 +22,12 @@ export default {
   name: "searche-form",
   data() {
     return {
-      query: "",
-      results: []
+      query: ""
     };
   },
   methods: {
     handleSubmit() {
-      this.$emit("render:table", this.results, this.query);
-      this.results = [];
+      this.$emit("render:query", this.query);
     },
 
     removeSearchQuery() {
@@ -41,5 +39,11 @@ export default {
 <style>
 .removeInput {
   transform: rotate(45deg);
+  cursor: pointer;
+  color: #ddd;
+  font-size: 36px;
+  -webkit-transform: rotate(45deg);
+  top: 0;
+  right: 0;
 }
 </style>

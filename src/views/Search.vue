@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <b-container>
-      <search-form @render:table="handleTable" />
+      <search-form @render:query="handleTable" />
       <br />
       <search-results
         :results="results"
@@ -14,9 +14,7 @@
 <script>
 import SearchForm from "@/components/SearchForm.vue";
 import SearchResults from "@/components/SearchResults.vue";
-// import axios from "axios";
-
-var url = "https://en.wikipedia.org/w/api.php";
+import API from "@/utils/api.js";
 
 export default {
   name: "search",
@@ -32,32 +30,16 @@ export default {
     SearchResults
   },
   methods: {
-    async handleTable(results, query) {
-      var params = {
-        action: "query",
-        list: "search",
-        srsearch: query,
-        format: "json"
-      };
+    async handleTable(query) {
+      await API.urlFormatting(query);
 
-      url = url + "?origin=*";
-      Object.keys(params).forEach(function(key) {
-        url += "&" + key + "=" + params[key];
-      });
+      var results_response = [];
 
-      var resultados = [];
-      await fetch(url)
-        .then(function(response) {
-          return response.json();
-        })
-        .then(function(response) {
-          resultados = response.query.search;
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+      let response = await API.getSearch();
 
-      this.results = resultados;
+      results_response = response.data.query.search;
+
+      this.results = results_response;
       this.query = query;
       this.query_results = true;
     }

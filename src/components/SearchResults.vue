@@ -23,9 +23,6 @@
         </table>
       </b-tab>
     </b-tabs>
-    <!-- <b-tabs v-show="results.length == 0" content-class="mt-3">
-      <b-tab title="Found 0 results"></b-tab>
-    </b-tabs>-->
   </div>
 </template>
 <script>
