@@ -1,0 +1,7 @@
+{
+  "name": "Template SearchBar",
+  "description": "A barebones Node.js app using Vue",
+  "repository": "https://github.com/gguzman89/search-vue/tree/develop",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "vue", "static"]
+}
