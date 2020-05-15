@@ -1,6 +1,6 @@
 # ppc-vue-rejoin
 
-[![Build Status](https://travis-ci.org/gguzman89/search-vue.svg?branch=develop)](https://travis-ci.org/gguzman89/search-vue) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://glacial-sea-20462.herokuapp.com)
+[![Build Status](https://travis-ci.org/gguzman89/search-vue.svg?branch=master)](https://travis-ci.org/gguzman89/search-vue) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://glacial-sea-20462.herokuapp.com)
 
 
 ## Project setup

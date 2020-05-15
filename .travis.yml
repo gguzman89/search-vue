@@ -11,15 +11,3 @@ before_script:
 script:
  - npm test
  - npm run build
-# deploy:
-#  - provider: heroku
-#    skip_cleanup: true
-#    api-key: c6a5ca0-aa79-4c07-bcdc-1af98d014c84
-#    app: vue-searchbar-frontend
-#    on: develop
-# notifications:
-#   email:
-#     recipients:
-#       - ggtpi0gabriel@gmail.com
-#     on_success: never # default: change
-#     on_failure: always # default: always
